@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6dv8midcrtwq"]
+
+[ext_resource type="Theme" uid="uid://ffqph11ffrhe" path="res://assets/ui/theme/debug_theme.tres" id="1_230vm"]
+[ext_resource type="Script" path="res://scripts/ui/debug_panel.gd" id="2_hhpor"]
+
+[node name="DebugPanel" type="PanelContainer"]
+custom_minimum_size = Vector2(200, 10)
+offset_right = 200.0
+offset_bottom = 20.0
+theme = ExtResource("1_230vm")
+script = ExtResource("2_hhpor")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="LabelContainers" type="VBoxContainer" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/LabelContainers"]
+visible = false
+layout_mode = 2
+text = "this is a very short label"
+
+[node name="Label2" type="Label" parent="MarginContainer/LabelContainers"]
+visible = false
+layout_mode = 2
+text = "this is a very long label that will expand the panel to the right"

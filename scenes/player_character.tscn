@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6qbjm3hxmpqx"]
+
+[ext_resource type="Script" path="res://scripts/character_controller.gd" id="1_7qs6j"]
+[ext_resource type="Script" path="res://scripts/fps_camera_controller.gd" id="2_mnx8g"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_tpi3h"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mp70y"]
+
+[node name="Character" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 2
+script = ExtResource("1_7qs6j")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+layers = 0
+mesh = SubResource("CapsuleMesh_tpi3h")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_mp70y")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+fov = 90.0
+script = ExtResource("2_mnx8g")
+camera_sensitivity = 0.1
+max_camera_pitch_angle = 85.0
+min_camera_pitch_angle = -85.0
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00130391, 0.00898194, -0.00185156)
+update_mode = 1

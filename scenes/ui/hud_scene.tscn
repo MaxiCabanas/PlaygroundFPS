@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://we1d01n5qim8"]
+
+[ext_resource type="Script" path="res://scripts/ui/hud.gd" id="1_7xpke"]
+[ext_resource type="PackedScene" uid="uid://b6dv8midcrtwq" path="res://scenes/ui/debug/debug_panel.tscn" id="2_g7qwt"]
+[ext_resource type="PackedScene" uid="uid://dr1pl65gieja5" path="res://scenes/ui/debug/debug_messages_panel.tscn" id="3_mn5yf"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_7xpke")
+
+[node name="DebugPanel" parent="." instance=ExtResource("2_g7qwt")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 210.0
+offset_bottom = 30.0
+
+[node name="Control" parent="." instance=ExtResource("3_mn5yf")]
+unique_name_in_owner = true
+layout_mode = 1
+offset_top = -53.0
+offset_bottom = -10.0

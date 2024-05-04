@@ -1,0 +1,38 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://ktclft2gls3s"]
+
+[ext_resource type="Shader" uid="uid://lwm0x21id4b4" path="res://shaders/weapons.tres" id="1_j63xy"]
+
+[sub_resource type="Gradient" id="Gradient_ut0h8"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_c8ely"]
+gradient = SubResource("Gradient_ut0h8")
+width = 1
+
+[sub_resource type="Gradient" id="Gradient_r8vev"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mpvuu"]
+gradient = SubResource("Gradient_r8vev")
+width = 1
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_j63xy")
+shader_parameter/albedo = Color(1, 1, 0.294118, 1)
+shader_parameter/point_size = null
+shader_parameter/roughness = null
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = null
+shader_parameter/metallic = null
+shader_parameter/uv1_scale = null
+shader_parameter/uv1_offset = null
+shader_parameter/uv2_scale = null
+shader_parameter/uv2_offset = null
+shader_parameter/fov = 70.0
+shader_parameter/toon_threshold = -0.125
+shader_parameter/toon_threshold_offset = 0.01
+shader_parameter/light_color = SubResource("GradientTexture1D_mpvuu")
+shader_parameter/dark_color = SubResource("GradientTexture1D_c8ely")
