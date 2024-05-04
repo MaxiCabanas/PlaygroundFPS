@@ -1,0 +1,115 @@
+[gd_scene load_steps=3 format=3 uid="uid://bovolw76jo1yr"]
+
+[ext_resource type="Script" path="res://scripts/ui/main_menu.gd" id="1_ufw37"]
+[ext_resource type="Theme" uid="uid://ffqph11ffrhe" path="res://assets/ui/theme/debug_theme.tres" id="2_ip16k"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ufw37")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_ip16k")
+
+[node name="TabContainer" type="TabContainer" parent="PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+tabs_visible = false
+
+[node name="HostOrJoinMenu" type="MarginContainer" parent="PanelContainer/TabContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 120
+theme_override_constants/margin_top = 110
+theme_override_constants/margin_right = 120
+theme_override_constants/margin_bottom = 110
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/TabContainer/HostOrJoinMenu"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="PlayerName" type="LineEdit" parent="PanelContainer/TabContainer/HostOrJoinMenu/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(20, 40)
+layout_mode = 2
+text = "Player"
+placeholder_text = "Set your player name"
+alignment = 1
+max_length = 32
+select_all_on_focus = true
+caret_blink = true
+
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/TabContainer/HostOrJoinMenu/VBoxContainer"]
+custom_minimum_size = Vector2(520, 250)
+layout_mode = 2
+columns = 3
+
+[node name="Host" type="Button" parent="PanelContainer/TabContainer/HostOrJoinMenu/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Host
+"
+
+[node name="VSeparator" type="VSeparator" parent="PanelContainer/TabContainer/HostOrJoinMenu/VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/TabContainer/HostOrJoinMenu/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RemoteAddress" type="LineEdit" parent="PanelContainer/TabContainer/HostOrJoinMenu/VBoxContainer/GridContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "127.0.0.1"
+placeholder_text = "Remote address"
+alignment = 1
+max_length = 32
+
+[node name="Join" type="Button" parent="PanelContainer/TabContainer/HostOrJoinMenu/VBoxContainer/GridContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Join
+"
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="PanelContainer/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/TabContainer/AspectRatioContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/TabContainer/AspectRatioContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/TabContainer/AspectRatioContainer/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 300)
+layout_mode = 2
+theme = ExtResource("2_ip16k")
+
+[node name="PlayersNameDisplay" type="VBoxContainer" parent="PanelContainer/TabContainer/AspectRatioContainer/CenterContainer/VBoxContainer/PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="ServerStartGame" type="Button" parent="PanelContainer/TabContainer/AspectRatioContainer/CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Start Game"
+
+[connection signal="button_up" from="PanelContainer/TabContainer/HostOrJoinMenu/VBoxContainer/GridContainer/Host" to="." method="_on_host_button_up"]
+[connection signal="button_up" from="PanelContainer/TabContainer/HostOrJoinMenu/VBoxContainer/GridContainer/VBoxContainer/Join" to="." method="_on_join_button_up"]
+[connection signal="button_up" from="PanelContainer/TabContainer/AspectRatioContainer/CenterContainer/VBoxContainer/ServerStartGame" to="." method="_on_server_start_game"]

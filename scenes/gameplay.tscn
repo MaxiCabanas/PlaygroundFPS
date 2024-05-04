@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://bql34m4vdy4aa"]
+[gd_scene load_steps=11 format=3 uid="uid://bql34m4vdy4aa"]
 
 [ext_resource type="PackedScene" uid="uid://c6qbjm3hxmpqx" path="res://scenes/player_character.tscn" id="1_5glpw"]
+[ext_resource type="Script" path="res://scripts/workflow/scene_loaded_notify.gd" id="1_hwrgs"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qhg7f"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -27,7 +28,8 @@ albedo_color = Color(0.478839, 0.407935, 0.242407, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7bffg"]
 
-[node name="Node3D" type="Node3D"]
+[node name="Node3D" type="Node3D" groups=["gameplay"]]
+script = ExtResource("1_hwrgs")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_fgwsw")

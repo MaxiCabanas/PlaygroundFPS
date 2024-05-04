@@ -19,7 +19,7 @@ func _process(_delta: float) -> void:
 		for property in properties_dic[node]:
 			_update_property(node, property)
 
-func AddOrUpdateProperty(node: Node, property: String, isVisible = true, isDynamic: bool = false, order: int = 0) -> void:
+func add_or_update_property(node: Node, property: String, isVisible = true, isDynamic: bool = false, order: int = 0) -> void:
 	if !properties_dic.has(node):
 		properties_dic[node] = {}
 	

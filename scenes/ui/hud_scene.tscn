@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dr1pl65gieja5" path="res://scenes/ui/debug/debug_messages_panel.tscn" id="3_mn5yf"]
 
 [node name="Control" type="Control"]
+z_index = 99
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
