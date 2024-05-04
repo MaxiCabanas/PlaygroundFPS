@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://bql34m4vdy4aa"]
 
 [ext_resource type="PackedScene" uid="uid://c6qbjm3hxmpqx" path="res://scenes/player_character.tscn" id="1_5glpw"]
-[ext_resource type="Script" path="res://scripts/workflow/scene_loaded_notify.gd" id="1_hwrgs"]
+[ext_resource type="Script" path="res://scripts/workflow/SpawnManager.gd" id="2_6k8bo"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qhg7f"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -28,8 +28,7 @@ albedo_color = Color(0.478839, 0.407935, 0.242407, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7bffg"]
 
-[node name="Node3D" type="Node3D" groups=["gameplay"]]
-script = ExtResource("1_hwrgs")
+[node name="Node3D" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_fgwsw")
@@ -69,4 +68,16 @@ skeleton = NodePath("../Floor/Node3D")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="wall2/StaticBody3D"]
 shape = SubResource("BoxShape3D_7bffg")
 
-[node name="Character" parent="." instance=ExtResource("1_5glpw")]
+[node name="SpawnManager" type="Node" parent="."]
+script = ExtResource("2_6k8bo")
+PlayerScene = ExtResource("1_5glpw")
+
+[node name="Marker3D" type="Marker3D" parent="SpawnManager"]
+
+[node name="Marker3D2" type="Marker3D" parent="SpawnManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.86447, 0, 0)
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://scenes/player_character.tscn")
+spawn_path = NodePath("..")
+spawn_limit = 10

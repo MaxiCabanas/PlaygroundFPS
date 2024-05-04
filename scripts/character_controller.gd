@@ -5,10 +5,20 @@ const ACC = 0.5
 const DESACC = 0.5
 const JUMP_VELOCITY = 4.5
 
+@onready var camera_3d: Camera3D = $Camera3D
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 var velocity_debug: bool = false
+
+var my_id: int: 
+	set(id): 
+		my_id = id
+		set_multiplayer_authority(id)
+
+func _ready() -> void:
+	camera_3d.current = my_id == multiplayer.get_unique_id()
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.

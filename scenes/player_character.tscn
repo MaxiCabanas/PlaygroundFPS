@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c6qbjm3hxmpqx"]
+[gd_scene load_steps=6 format=3 uid="uid://c6qbjm3hxmpqx"]
 
 [ext_resource type="Script" path="res://scripts/character_controller.gd" id="1_7qs6j"]
 [ext_resource type="Script" path="res://scripts/fps_camera_controller.gd" id="2_mnx8g"]
@@ -7,13 +7,20 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mp70y"]
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_lspyx"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
 [node name="Character" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 collision_layer = 2
 script = ExtResource("1_7qs6j")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-layers = 0
 mesh = SubResource("CapsuleMesh_tpi3h")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -30,3 +37,6 @@ min_camera_pitch_angle = -85.0
 [node name="ReflectionProbe" type="ReflectionProbe" parent="Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00130391, 0.00898194, -0.00185156)
 update_mode = 1
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_lspyx")
