@@ -14,7 +14,7 @@ func _ready() -> void:
 	
 	player_name.text_changed.connect(func(new_name): Lobby.player_info.name = new_name)
 	
-	Lobby.player_connected.connect(_on_player_connected)
+	Lobby.player_connected.connect(_add_player_label)
 	
 	#client notifications
 	multiplayer.connected_to_server.connect(_on_connected_ok)
@@ -22,7 +22,7 @@ func _ready() -> void:
 	multiplayer.server_disconnected.connect(_on_server_disconnected)
 	
 	
-func _on_player_connected(player_id: int, player_info):
+func _add_player_label(player_id: int, player_info):
 	var new_player_label: Label = Label.new()
 	var format: String = "%s (%s)"
 	new_player_label.name = str(player_id)

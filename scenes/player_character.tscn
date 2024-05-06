@@ -1,9 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://c6qbjm3hxmpqx"]
+[gd_scene load_steps=7 format=3 uid="uid://c6qbjm3hxmpqx"]
 
 [ext_resource type="Script" path="res://scripts/character_controller.gd" id="1_7qs6j"]
 [ext_resource type="Script" path="res://scripts/fps_camera_controller.gd" id="2_mnx8g"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_tpi3h"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_5lvmd"]
+left_to_right = 0.8
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mp70y"]
 
@@ -15,13 +18,18 @@ properties/1/path = NodePath(".:rotation")
 properties/1/spawn = true
 properties/1/replication_mode = 1
 
-[node name="Character" type="CharacterBody3D"]
+[node name="Character" type="CharacterBody3D" groups=["Player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 collision_layer = 2
 script = ExtResource("1_7qs6j")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_tpi3h")
+
+[node name="nose" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(2.28448e-15, -2.06514e-08, 0.191106, -1.19563, -2.06514e-08, 0, 5.22627e-08, -0.472449, -8.35351e-09, -0.00982225, 0.24371, -0.585135)
+mesh = SubResource("PrismMesh_5lvmd")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_mp70y")
