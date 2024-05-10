@@ -6,7 +6,6 @@ const DESACC = 0.5
 const JUMP_VELOCITY = 4.5
 
 @onready var camera_3d: Camera3D = $Camera3D
-@onready var nose: MeshInstance3D = %nose
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -18,7 +17,6 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	camera_3d.current = is_multiplayer_authority()
-	nose.set("visible", !is_multiplayer_authority())
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.

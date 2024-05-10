@@ -1,0 +1,23 @@
+[gd_scene load_steps=8 format=3 uid="uid://sq043a6d3ixx"]
+
+[ext_resource type="PackedScene" uid="uid://bj5swh0bjlpfl" path="res://scenes/weapons/weapon.tscn" id="1_usfb4"]
+[ext_resource type="PackedScene" uid="uid://bor1l5x6vvo8q" path="res://assets/models/weapons/m4/m4_butt.glb" id="2_bwqku"]
+[ext_resource type="PackedScene" uid="uid://cvpspw5xww3u5" path="res://assets/models/weapons/m4/m4_fsight.glb" id="3_w7gvx"]
+[ext_resource type="PackedScene" uid="uid://drjuircqdc6ev" path="res://assets/models/weapons/m4/m4_handle.glb" id="4_pkwit"]
+[ext_resource type="PackedScene" uid="uid://ch4vyyx06e4hy" path="res://assets/models/weapons/m4/m4_magazine.glb" id="5_c3rrj"]
+[ext_resource type="PackedScene" uid="uid://b7p86d0edg8qe" path="res://assets/models/weapons/m4/m4_rsight.glb" id="6_fyfvr"]
+[ext_resource type="PackedScene" uid="uid://c7im0vwtjmhce" path="res://assets/models/weapons/m4/m4_trigger.glb" id="7_5pryj"]
+
+[node name="root" instance=ExtResource("1_usfb4")]
+
+[node name="m4_butt" parent="." index="1" instance=ExtResource("2_bwqku")]
+
+[node name="m4_fsight" parent="." index="2" instance=ExtResource("3_w7gvx")]
+
+[node name="m4_handle" parent="." index="3" instance=ExtResource("4_pkwit")]
+
+[node name="m4_magazine" parent="." index="4" instance=ExtResource("5_c3rrj")]
+
+[node name="m4_rsight" parent="." index="5" instance=ExtResource("6_fyfvr")]
+
+[node name="m4_trigger" parent="." index="6" instance=ExtResource("7_5pryj")]

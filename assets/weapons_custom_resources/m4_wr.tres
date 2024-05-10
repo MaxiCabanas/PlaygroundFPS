@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="WeaponResource" load_steps=9 format=3 uid="uid://fy1w4phkpsyw"]
+
+[ext_resource type="PackedScene" uid="uid://bmnebiex3fw7n" path="res://assets/models/weapons/m4/m4_body.glb" id="1_ktwuu"]
+[ext_resource type="Script" path="res://scripts/weapon_resource.gd" id="1_le0ou"]
+[ext_resource type="PackedScene" uid="uid://bor1l5x6vvo8q" path="res://assets/models/weapons/m4/m4_butt.glb" id="2_2v2bk"]
+[ext_resource type="PackedScene" uid="uid://cvpspw5xww3u5" path="res://assets/models/weapons/m4/m4_fsight.glb" id="3_qewu6"]
+[ext_resource type="PackedScene" uid="uid://drjuircqdc6ev" path="res://assets/models/weapons/m4/m4_handle.glb" id="4_cxab4"]
+[ext_resource type="PackedScene" uid="uid://ch4vyyx06e4hy" path="res://assets/models/weapons/m4/m4_magazine.glb" id="5_56ki6"]
+[ext_resource type="PackedScene" uid="uid://b7p86d0edg8qe" path="res://assets/models/weapons/m4/m4_rsight.glb" id="6_ta1fv"]
+[ext_resource type="PackedScene" uid="uid://c7im0vwtjmhce" path="res://assets/models/weapons/m4/m4_trigger.glb" id="7_n05qt"]
+
+[resource]
+script = ExtResource("1_le0ou")
+body = ExtResource("1_ktwuu")
+default_attachments = Array[PackedScene]([ExtResource("2_2v2bk"), ExtResource("3_qewu6"), ExtResource("4_cxab4"), ExtResource("5_56ki6"), ExtResource("6_ta1fv"), ExtResource("7_n05qt")])
+position = Vector3(0.0502158, -0.155554, -0.0906271)
+rotation = Vector3(0, 0, 0)
+sway = Vector3(0, 0, 0)
+sway_amount = 0.0

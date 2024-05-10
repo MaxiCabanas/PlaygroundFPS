@@ -71,10 +71,12 @@ func load_game(game_scene_path):
 func player_loaded():
 	if multiplayer.is_server():
 		players_loaded += 1
-		if players_loaded == players.size():
+		if all_players_are_loaded():
 			all_players_ready.emit()
-			players_loaded = 0
+			#players_loaded = 0
 
+func all_players_are_loaded() -> bool:
+	return players_loaded == players.size()
 
 # When a peer connects, send them my player info.
 # This allows transfer of all desired data for each player, not only the unique ID.

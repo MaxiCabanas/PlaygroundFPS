@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b7xjxckp1vsyc"
-path="res://.godot/imported/Weapon_01.fbx-699ab04dacace30caa50097b201e34a9.scn"
+uid="uid://b7p86d0edg8qe"
+path="res://.godot/imported/m4_rsight.glb-9f42c9a72a509ddd0017e520edc17cde.scn"
 
 [deps]
 
-source_file="res://assets/models/wepons_lowpoly/Weapon_01.fbx"
-dest_files=["res://.godot/imported/Weapon_01.fbx-699ab04dacace30caa50097b201e34a9.scn"]
+source_file="res://assets/models/weapons/m4/m4_rsight.glb"
+dest_files=["res://.godot/imported/m4_rsight.glb-9f42c9a72a509ddd0017e520edc17cde.scn"]
 
 [params]
 
@@ -31,9 +31,9 @@ animation/remove_immutable_tracks=true
 import_script/path=""
 _subresources={
 "materials": {
-"Weapons_01": {
+"Weapons_01.001": {
 "use_external/enabled": true,
-"use_external/path": "res://assets/materials/weapons.tres"
+"use_external/path": "res://assets/materials/standard.tres"
 }
 }
 }

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://clo6k47dos1v7"
-path="res://.godot/imported/Knife_01.fbx-c8244406890915f516958f80a206a59e.scn"
+uid="uid://bmnebiex3fw7n"
+path="res://.godot/imported/m4_body.glb-ed2b159861345527fdc0516c9960db1b.scn"
 
 [deps]
 
-source_file="res://assets/models/wepons_lowpoly/Knife_01.fbx"
-dest_files=["res://.godot/imported/Knife_01.fbx-c8244406890915f516958f80a206a59e.scn"]
+source_file="res://assets/models/weapons/m4/m4_body.glb"
+dest_files=["res://.godot/imported/m4_body.glb-ed2b159861345527fdc0516c9960db1b.scn"]
 
 [params]
 
@@ -31,9 +31,9 @@ animation/remove_immutable_tracks=true
 import_script/path=""
 _subresources={
 "materials": {
-"Weapons_01": {
+"Weapons_01.001": {
 "use_external/enabled": true,
-"use_external/path": "res://assets/materials/weapons.tres"
+"use_external/path": "res://assets/materials/standard.tres"
 }
 }
 }

@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 HUD="*res://scenes/ui/hud_scene.tscn"
 Lobby="*res://scripts/lobby.gd"
+WeaponLoader="*res://scripts/weapons/weapon_loader.gd"
 
 [editor_plugins]
 

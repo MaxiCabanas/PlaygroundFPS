@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://qy4pdctk5q3b"
-path="res://.godot/imported/Weapon_02.fbx-997fcb48c6a7d0f34a9145a9efbb107a.scn"
+uid="uid://cipcry3lk8mev"
+path="res://.godot/imported/knife.glb-e6b03a79259c17b1cbde19e18363fe56.scn"
 
 [deps]
 
-source_file="res://assets/models/wepons_lowpoly/Weapon_02.fbx"
-dest_files=["res://.godot/imported/Weapon_02.fbx-997fcb48c6a7d0f34a9145a9efbb107a.scn"]
+source_file="res://assets/models/weapons/knife/knife.glb"
+dest_files=["res://.godot/imported/knife.glb-e6b03a79259c17b1cbde19e18363fe56.scn"]
 
 [params]
 
@@ -33,19 +33,7 @@ _subresources={
 "materials": {
 "Weapons_01": {
 "use_external/enabled": true,
-"use_external/path": "res://assets/materials/weapons.tres"
-}
-},
-"meshes": {
-"Root Scene_Weapon_02": {
-"generate/lightmap_uv": 0,
-"generate/lods": 0,
-"generate/shadow_meshes": 0,
-"lods/normal_merge_angle": 60.0,
-"lods/normal_split_angle": 25.0,
-"save_to_file/enabled": true,
-"save_to_file/make_streamable": "",
-"save_to_file/path": "res://assets/models/weapon_meshes/m4_body.res"
+"use_external/path": "res://assets/materials/weapon_standard.tres"
 }
 }
 }

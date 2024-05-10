@@ -8,7 +8,7 @@ var active_messages_count: int = 0
 func _ready() -> void:
 	animation_player.animation_finished.connect(_on_panel_animation_finished)
 	
-func _on_panel_animation_finished(anim_name):
+func _on_panel_animation_finished(_anim_name):
 	if active_messages_count == 0:
 		for child in messages_container.get_children():
 			child.queue_free()

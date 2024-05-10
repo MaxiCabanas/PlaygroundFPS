@@ -1,18 +1,19 @@
-[gd_scene load_steps=11 format=3 uid="uid://bql34m4vdy4aa"]
+[gd_scene load_steps=12 format=3 uid="uid://bql34m4vdy4aa"]
 
 [ext_resource type="PackedScene" uid="uid://c6qbjm3hxmpqx" path="res://scenes/player_character.tscn" id="1_5glpw"]
+[ext_resource type="Material" uid="uid://p0ci6686bobo" path="res://assets/materials/gradient_texture_mat.tres" id="1_u1x3q"]
 [ext_resource type="Script" path="res://scripts/workflow/SpawnManager.gd" id="2_6k8bo"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qhg7f"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nr3ci"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 
-[sub_resource type="Sky" id="Sky_1x5wf"]
-sky_material = SubResource("ProceduralSkyMaterial_qhg7f")
+[sub_resource type="Sky" id="Sky_33opw"]
+sky_material = SubResource("ProceduralSkyMaterial_nr3ci")
 
-[sub_resource type="Environment" id="Environment_fgwsw"]
+[sub_resource type="Environment" id="Environment_30vyh"]
 background_mode = 2
-sky = SubResource("Sky_1x5wf")
+sky = SubResource("Sky_33opw")
 tonemap_mode = 2
 glow_enabled = true
 
@@ -30,12 +31,12 @@ albedo_color = Color(0.478839, 0.407935, 0.242407, 1)
 
 [node name="Node3D" type="Node3D"]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_fgwsw")
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+transform = Transform3D(-0.5373, -0.695061, 0.477702, 0, 0.566406, 0.824126, -0.843391, 0.442803, -0.30433, 0, 0, 0)
 shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_30vyh")
 
 [node name="Floor" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_gpbbb")
@@ -52,6 +53,7 @@ shape = SubResource("WorldBoundaryShape3D_gjjkb")
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 1, -8.32478, 2.19692, -8.68312)
 mesh = SubResource("BoxMesh_eb1ae")
 skeleton = NodePath("../Floor/Node3D")
+surface_material_override/0 = ExtResource("1_u1x3q")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="wall"]
 
@@ -62,6 +64,7 @@ shape = SubResource("BoxShape3D_7bffg")
 transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, 0.793, 2, -8.683)
 mesh = SubResource("BoxMesh_eb1ae")
 skeleton = NodePath("../Floor/Node3D")
+surface_material_override/0 = ExtResource("1_u1x3q")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="wall2"]
 

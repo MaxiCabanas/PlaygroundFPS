@@ -1,12 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://c6qbjm3hxmpqx"]
+[gd_scene load_steps=8 format=3 uid="uid://c6qbjm3hxmpqx"]
 
 [ext_resource type="Script" path="res://scripts/character_controller.gd" id="1_7qs6j"]
 [ext_resource type="Script" path="res://scripts/fps_camera_controller.gd" id="2_mnx8g"]
+[ext_resource type="PackedScene" uid="uid://bj5swh0bjlpfl" path="res://scenes/weapons/weapon.tscn" id="3_4b3by"]
+[ext_resource type="Resource" uid="uid://fy1w4phkpsyw" path="res://assets/weapons_custom_resources/m4_wr.tres" id="4_7uo44"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_tpi3h"]
-
-[sub_resource type="PrismMesh" id="PrismMesh_5lvmd"]
-left_to_right = 0.8
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mp70y"]
 
@@ -24,12 +23,8 @@ collision_layer = 2
 script = ExtResource("1_7qs6j")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("CapsuleMesh_tpi3h")
-
-[node name="nose" type="MeshInstance3D" parent="."]
-unique_name_in_owner = true
-transform = Transform3D(2.28448e-15, -2.06514e-08, 0.191106, -1.19563, -2.06514e-08, 0, 5.22627e-08, -0.472449, -8.35351e-09, -0.00982225, 0.24371, -0.585135)
-mesh = SubResource("PrismMesh_5lvmd")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_mp70y")
@@ -41,6 +36,9 @@ script = ExtResource("2_mnx8g")
 camera_sensitivity = 0.1
 max_camera_pitch_angle = 85.0
 min_camera_pitch_angle = -85.0
+
+[node name="root" parent="Camera3D" instance=ExtResource("3_4b3by")]
+weapon_resource = ExtResource("4_7uo44")
 
 [node name="ReflectionProbe" type="ReflectionProbe" parent="Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00130391, 0.00898194, -0.00185156)

@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvasuw87rf8d3"]
+
+[ext_resource type="Script" path="res://scripts/editor/screen_grid.gd" id="1_dmwuy"]
+
+[node name="root" type="Node2D"]
+script = ExtResource("1_dmwuy")
+
+[node name="LineV" type="Line2D" parent="."]
+width = 5.0
+default_color = Color(1, 0, 1, 1)
+
+[node name="LineH" type="Line2D" parent="."]
+width = 5.0
+default_color = Color(1, 0, 1, 1)

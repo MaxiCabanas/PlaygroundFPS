@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="WeaponResource" load_steps=3 format=3 uid="uid://fy1w4phkpsyw"]
-
-[ext_resource type="ArrayMesh" uid="uid://bxnupjnytiset" path="res://assets/models/weapon_meshes/m4_body.res" id="1_0jd0w"]
-[ext_resource type="Script" path="res://scripts/weapon_resource.gd" id="1_le0ou"]
-
-[resource]
-script = ExtResource("1_le0ou")
-mesh = ExtResource("1_0jd0w")

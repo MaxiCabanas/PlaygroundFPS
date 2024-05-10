@@ -10,14 +10,16 @@ var _free_spawners: Array
 
 func _ready() -> void:
 	Lobby.player_loaded.rpc_id(1)
-	print("server: ", multiplayer.is_server(), "READY")
+	
 	if multiplayer.is_server():
-		Lobby.all_players_ready.connect(start_game)
+		if Lobby.all_players_are_loaded():
+			start_game()
+		else:
+			Lobby.all_players_ready.connect(start_game)
 
 func start_game():
-	print(multiplayer.is_server(), " players count ", Lobby.players.keys().size())
 	for player in Lobby.players:
-		print(player)
+
 		_try_reset_free_spawners()
 		var spawn_point = _free_spawners.pick_random() as Node3D
 		#_free_spawners.erase(spawn_point)

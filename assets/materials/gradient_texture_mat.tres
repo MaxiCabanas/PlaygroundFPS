@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://p0ci6686bobo"]
+
+[ext_resource type="Shader" path="res://shaders/gradient_texture.gdshader" id="1_qrbtw"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_qrbtw")
+shader_parameter/color = Color(0.727498, 0.715103, 0.693337, 1)
+shader_parameter/shadow = 0.32
+shader_parameter/shadow_width = 0.126
+shader_parameter/shadow_color = Color(0.148067, 0.10028, 0.173885, 1)
+shader_parameter/_specular_smoothness = 0.23
+shader_parameter/_specular_strength = 0.25
+shader_parameter/_glossiness = 0.009
+shader_parameter/_rim_size = 0.296
+shader_parameter/_rim_smoothness = 0.0
