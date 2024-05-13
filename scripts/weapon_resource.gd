@@ -1,16 +1,19 @@
 class_name WeaponResource extends Resource
 
 @export_group("Visuals")
-@export var body: PackedScene
-@export var default_attachments: Array[PackedScene]
+@export var body: Mesh
+@export var default_attachments: Array[Mesh]
+@export var material: Material
 
 @export_group("Properties")
 @export var position: Vector3
 @export var rotation: Vector3
 
 @export_subgroup("Sway")
-@export var sway: Vector3
-@export var sway_amount: float
+@export var max_sway_amount: float = 28
+@export var sway_speed: float = 0.1
+@export var sway_posisition_mult: Vector2 = Vector2(0.1, 0.1)
+@export var sway_rotation_mult: Vector3 = Vector3(30, 30, 30)
 
 
 #@export var front_sight: Vector3

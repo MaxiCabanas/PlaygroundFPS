@@ -1,19 +1,23 @@
-[gd_resource type="Resource" script_class="WeaponResource" load_steps=9 format=3 uid="uid://fy1w4phkpsyw"]
+[gd_resource type="Resource" script_class="WeaponResource" load_steps=10 format=3 uid="uid://fy1w4phkpsyw"]
 
-[ext_resource type="PackedScene" uid="uid://bmnebiex3fw7n" path="res://assets/models/weapons/m4/m4_body.glb" id="1_ktwuu"]
 [ext_resource type="Script" path="res://scripts/weapon_resource.gd" id="1_le0ou"]
-[ext_resource type="PackedScene" uid="uid://bor1l5x6vvo8q" path="res://assets/models/weapons/m4/m4_butt.glb" id="2_2v2bk"]
-[ext_resource type="PackedScene" uid="uid://cvpspw5xww3u5" path="res://assets/models/weapons/m4/m4_fsight.glb" id="3_qewu6"]
-[ext_resource type="PackedScene" uid="uid://drjuircqdc6ev" path="res://assets/models/weapons/m4/m4_handle.glb" id="4_cxab4"]
-[ext_resource type="PackedScene" uid="uid://ch4vyyx06e4hy" path="res://assets/models/weapons/m4/m4_magazine.glb" id="5_56ki6"]
-[ext_resource type="PackedScene" uid="uid://b7p86d0edg8qe" path="res://assets/models/weapons/m4/m4_rsight.glb" id="6_ta1fv"]
-[ext_resource type="PackedScene" uid="uid://c7im0vwtjmhce" path="res://assets/models/weapons/m4/m4_trigger.glb" id="7_n05qt"]
+[ext_resource type="ArrayMesh" uid="uid://d17i4ce1xvop5" path="res://assets/models/weapons/m4/m4_body.obj" id="1_t5fty"]
+[ext_resource type="ArrayMesh" uid="uid://pvjx0oiewdrf" path="res://assets/models/weapons/m4/m4_butt.obj" id="2_uijno"]
+[ext_resource type="ArrayMesh" uid="uid://2llayh4sfpix" path="res://assets/models/weapons/m4/m4_fsight.obj" id="3_rxanr"]
+[ext_resource type="ArrayMesh" uid="uid://drxog20mqjfbo" path="res://assets/models/weapons/m4/m4_handle.obj" id="4_nvud8"]
+[ext_resource type="ArrayMesh" uid="uid://bwjafptal2pku" path="res://assets/models/weapons/m4/m4_mag.obj" id="5_xnptc"]
+[ext_resource type="ArrayMesh" uid="uid://bho6twdeeauqk" path="res://assets/models/weapons/m4/m4_rsight.obj" id="6_shiu6"]
+[ext_resource type="ArrayMesh" uid="uid://d0483m4uc54u0" path="res://assets/models/weapons/m4/m4_trigger.obj" id="7_spl1s"]
+[ext_resource type="Material" uid="uid://l6igmcthevod" path="res://assets/materials/weapons_shader.tres" id="8_61bdb"]
 
 [resource]
 script = ExtResource("1_le0ou")
-body = ExtResource("1_ktwuu")
-default_attachments = Array[PackedScene]([ExtResource("2_2v2bk"), ExtResource("3_qewu6"), ExtResource("4_cxab4"), ExtResource("5_56ki6"), ExtResource("6_ta1fv"), ExtResource("7_n05qt")])
-position = Vector3(0.0502158, -0.155554, -0.0906271)
-rotation = Vector3(0, 0, 0)
-sway = Vector3(0, 0, 0)
-sway_amount = 0.0
+body = ExtResource("1_t5fty")
+default_attachments = Array[Mesh]([ExtResource("2_uijno"), ExtResource("3_rxanr"), ExtResource("4_nvud8"), ExtResource("5_xnptc"), ExtResource("6_shiu6"), ExtResource("7_spl1s")])
+material = ExtResource("8_61bdb")
+position = Vector3(0.0494567, -0.164995, -0.0583599)
+rotation = Vector3(-8, -5, 0)
+max_sway_amount = 15.0
+sway_speed = 0.1
+sway_posisition_mult = Vector2(0.05, 0.025)
+sway_rotation_mult = Vector3(15, 15, 15)

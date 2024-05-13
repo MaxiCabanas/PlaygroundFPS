@@ -1,0 +1,18 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://l6igmcthevod"]
+
+[ext_resource type="Shader" uid="uid://dp8a23yhfbhsk" path="res://shaders/weapons_default.tres" id="1_fq3cm"]
+[ext_resource type="Texture2D" uid="uid://b3c33t6doktyt" path="res://assets/textures/weapons_standard.png" id="2_7k8np"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_fq3cm")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/point_size = null
+shader_parameter/roughness = null
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = null
+shader_parameter/metallic = null
+shader_parameter/uv1_scale = Vector2(1, 1)
+shader_parameter/uv1_offset = null
+shader_parameter/fov = 70.0
+shader_parameter/texture_albedo = ExtResource("2_7k8np")

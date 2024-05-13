@@ -17,6 +17,7 @@ script = ExtResource("1_7xpke")
 
 [node name="DebugPanel" parent="." instance=ExtResource("2_g7qwt")]
 unique_name_in_owner = true
+visible = true
 layout_mode = 0
 offset_left = 10.0
 offset_top = 10.0

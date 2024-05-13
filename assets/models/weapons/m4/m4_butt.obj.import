@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://pvjx0oiewdrf"
+path="res://.godot/imported/m4_butt.obj-801d27c203a356c376b5f6b4bfb791c2.mesh"
+
+[deps]
+
+files=["res://.godot/imported/m4_butt.obj-801d27c203a356c376b5f6b4bfb791c2.mesh"]
+
+source_file="res://assets/models/weapons/m4/m4_butt.obj"
+dest_files=["res://.godot/imported/m4_butt.obj-801d27c203a356c376b5f6b4bfb791c2.mesh", "res://.godot/imported/m4_butt.obj-801d27c203a356c376b5f6b4bfb791c2.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
