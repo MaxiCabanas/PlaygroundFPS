@@ -37,7 +37,8 @@ camera_sensitivity = 0.1
 max_camera_pitch_angle = 85.0
 min_camera_pitch_angle = -85.0
 
-[node name="root" parent="Camera3D" instance=ExtResource("3_4b3by")]
+[node name="weapon_root" parent="Camera3D" instance=ExtResource("3_4b3by")]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 data = ExtResource("4_7uo44")
 

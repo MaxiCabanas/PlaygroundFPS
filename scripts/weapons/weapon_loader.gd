@@ -19,6 +19,6 @@ static func load_weapon(weapon_node: Node3D, weapon_data: WeaponResource) -> Wea
 		weapon_node.add_child(mesh_instance)
 	
 	weapon_node.position = weapon_data.position
-	weapon_node.rotation = weapon_node.rotation
+	weapon_node.rotation_degrees = weapon_node.rotation
 
 	return weapon_data

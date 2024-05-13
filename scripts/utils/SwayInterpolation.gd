@@ -1,37 +1,42 @@
 class_name SwayInterpolation extends Object
 
 var _data: WeaponResource
+var _sway_multiplier: Vector3
 var _current_position: Vector3
-var _current_rotation: Vector3
 
 
-func _init(weapon_data: WeaponResource, initial_pos: Vector3 = Vector3.ZERO, current_rotation = Vector3.ZERO) -> void:
+func _init(weapon_data: WeaponResource, sway_multiplier: Vector3, initial_pos: Vector3 = Vector3.ZERO) -> void:
 	_data = weapon_data
+	_sway_multiplier = sway_multiplier
 	_current_position = initial_pos
-	_current_rotation = current_rotation
 
-
-func update_position(delta: float, input_velocity: Vector2) -> Vector3:
+	
+func update(delta: float, target: Vector3, input_velocity: Vector3) -> Vector3:
 	_current_position.x = lerp(_current_position.x, 
-	_data.position.x - (input_velocity.x * _data.sway_posisition_mult.x * delta), 
+	target.x + (input_velocity.x * _sway_multiplier.x * delta), 
 	_data.sway_speed)
 	
 	_current_position.y = lerp(_current_position.y, 
-	_data.position.y + (input_velocity.y * _data.sway_posisition_mult.y * delta), 
+	target.y + (input_velocity.y * _sway_multiplier.y * delta), 
+	_data.sway_speed)
+	
+	_current_position.z = lerp(_current_position.z, 
+	target.z + (input_velocity.z * _sway_multiplier.z * delta), 
 	_data.sway_speed)
 	return _current_position
+
+
+#rot:
+	#x = y
+	#y = x
+	#z = -x
+static func to_rotation_input(input: Vector2) -> Vector3:
+	return Vector3(input.y, input.x, -input.x)
 	
+#position:
+	#x = -x
+	#y = y
+	#z = 0???
+static func to_position_input(input: Vector2) -> Vector3:
+	return Vector3(-input.x, input.y, 0)
 	
-func update_rotation(delta: float, input_velocity: Vector2) -> Vector3:
-	_current_rotation.x = lerp(_current_rotation.x, 
-	_data.rotation.x + (input_velocity.y * _data.sway_rotation_mult.x * delta), 
-	_data.sway_speed)
-	
-	_current_rotation.y = lerp(_current_rotation.y, 
-	_data.rotation.y + (input_velocity.x * _data.sway_rotation_mult.y * delta), 
-	_data.sway_speed)
-	
-	_current_rotation.z = lerp(_current_rotation.z, 
-	_data.rotation.z - (input_velocity.x * _data.sway_rotation_mult.z * delta), 
-	_data.sway_speed)
-	return _current_rotation
