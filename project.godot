@@ -18,7 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 HUD="*res://scenes/ui/hud_scene.tscn"
-Lobby="*res://scripts/lobby.gd"
+Lobby="*res://scripts/workflow/lobby.gd"
+GameInstance="*res://scripts/workflow/game_instance.gd"
 
 [editor_plugins]
 
