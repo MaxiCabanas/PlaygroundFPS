@@ -3,7 +3,7 @@ class_name WeaponResource extends Resource
 enum SwayMode {
 	NONE,
 	LERP,
-	PHYSICS
+	PHYSICS,
 }
 
 @export_group("Visuals")
@@ -22,7 +22,7 @@ enum SwayMode {
 @export_group("Sway Lerp")
 @export var max_sway_amount: float = 28
 @export var sway_speed: float = 0.1
-@export var sway_posisition_mult: Vector3 = Vector3(0.1, 0.1, 0)
+@export var sway_position_mult: Vector3 = Vector3(0.1, 0.1, 0)
 @export var sway_rotation_mult: Vector3 = Vector3(30, 30, 30)
 
 @export_group("Sway Physics")
