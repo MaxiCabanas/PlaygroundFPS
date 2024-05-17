@@ -10,7 +10,7 @@ func _input(event: InputEvent) -> void:
 static func Show_debug_message(message: String, duration = 5.0):
 	HUD.debug_messages.show_debug_message(message, duration)
 
-static func Add_or_update_property(node: Node, property: String, isVisible = true, isDynamic: bool = false, order: int = 0) -> void:
+static func Add_or_update_property(node: Object, property: String, isVisible = true, isDynamic: bool = false, order: int = 0) -> void:
 	HUD.debug_panel.add_or_update_property(node, property, isVisible, isDynamic, order)
 
 static func Print_property(title: String, value: String, isVisible = true, order = 0):

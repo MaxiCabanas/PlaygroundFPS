@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="WeaponResource" load_steps=11 format=3 uid="uid://fy1w4phkpsyw"]
+
+[ext_resource type="PackedScene" uid="uid://dtr41psuoxhj7" path="res://scenes/bullet.tscn" id="1_mhk6q"]
+[ext_resource type="ArrayMesh" uid="uid://d17i4ce1xvop5" path="res://assets/models/weapons/m4/m4_body.obj" id="1_s08ub"]
+[ext_resource type="ArrayMesh" uid="uid://pvjx0oiewdrf" path="res://assets/models/weapons/m4/m4_butt.obj" id="2_qoa5s"]
+[ext_resource type="ArrayMesh" uid="uid://2llayh4sfpix" path="res://assets/models/weapons/m4/m4_fsight.obj" id="3_8d4w5"]
+[ext_resource type="ArrayMesh" uid="uid://drxog20mqjfbo" path="res://assets/models/weapons/m4/m4_handle.obj" id="4_72rmc"]
+[ext_resource type="ArrayMesh" uid="uid://bwjafptal2pku" path="res://assets/models/weapons/m4/m4_mag.obj" id="5_t5r5q"]
+[ext_resource type="ArrayMesh" uid="uid://bho6twdeeauqk" path="res://assets/models/weapons/m4/m4_rsight.obj" id="6_vn35b"]
+[ext_resource type="ArrayMesh" uid="uid://d0483m4uc54u0" path="res://assets/models/weapons/m4/m4_trigger.obj" id="7_g8m8b"]
+[ext_resource type="Material" uid="uid://l6igmcthevod" path="res://assets/materials/weapons_shader.tres" id="8_hn5ad"]
+[ext_resource type="Script" path="res://scripts/weapons/weapon_resource.gd" id="9_pwoil"]
+
+[resource]
+script = ExtResource("9_pwoil")
+name = "M4"
+body = ExtResource("1_s08ub")
+default_attachments = Array[Mesh]([ExtResource("2_qoa5s"), ExtResource("3_8d4w5"), ExtResource("4_72rmc"), ExtResource("5_t5r5q"), ExtResource("6_vn35b"), ExtResource("7_g8m8b")])
+material = ExtResource("8_hn5ad")
+position = Vector3(0.0494567, -0.164995, -0.0583599)
+rotation = Vector3(-8, -5, 0)
+muzzle = Vector3(-1.49012e-08, 0.0838494, -0.685294)
+sway_position_mode = 1
+sway_rotation_mode = 2
+max_sway_amount = 28.0
+sway_speed = 0.1
+sway_position_mult = Vector3(0.1, 0.1, 0)
+sway_rotation_mult = Vector3(30, 15, 30)
+p_frecuency = 1.0
+p_damping = 0.5
+p_responsiveness = -0.1
+r_frecuency = 1.0
+r_damping = 0.5
+r_responsiveness = -0.1
+capacity = 30
+pellets_per_shot = 1
+ammo_scene = ExtResource("1_mhk6q")
+bullets_per_minute = 900
+muzzle_velocity = 100.0

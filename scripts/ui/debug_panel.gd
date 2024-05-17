@@ -20,7 +20,7 @@ func _process(_delta: float) -> void:
 		for property in properties_dic[node]:
 			_update_property(node, property)
 
-func add_or_update_property(node: Node, property: String, isVisible = true, isDynamic: bool = false, order: int = 0) -> void:
+func add_or_update_property(node: Object, property: String, isVisible = true, isDynamic: bool = false, order: int = 0) -> void:
 	if !properties_dic.has(node):
 		properties_dic[node] = {}
 	
@@ -31,7 +31,7 @@ func add_or_update_property(node: Node, property: String, isVisible = true, isDy
 	
 	if !property_data.has("label") || !property_data.label:
 		property_data.label = Label.new()
-		property_data.label.set("name", node.name + "_" + property)
+		property_data.label.set("name", str(node.get_instance_id()) + "_" + property)
 		properties_container.add_child(property_data.label)
 	
 	property_data.label.set("visible", isVisible)
@@ -40,7 +40,7 @@ func add_or_update_property(node: Node, property: String, isVisible = true, isDy
 	
 	_update_property(node, property, false)
 
-func _update_property(node: Node, property: String, check_is_dynamic: bool = true):
+func _update_property(node: Object, property: String, check_is_dynamic: bool = true):
 	var property_data = properties_dic[node][property]
 	if property_data.label.get("visible") && (!check_is_dynamic || property_data.isDynamic):
 			#property_data.label.text = property + ": " + str(node.get(property))

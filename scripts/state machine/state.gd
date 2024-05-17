@@ -1,7 +1,7 @@
 class_name State
 extends Node
 
-@export var state_value: int
+@export var next_: int
 
 func on_enter() -> void:
 	pass

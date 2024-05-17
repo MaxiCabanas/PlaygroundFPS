@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dtr41psuoxhj7"]
+
+[ext_resource type="Script" path="res://scripts/ammo/bullet.gd" id="1_qcpbo"]
+[ext_resource type="Material" uid="uid://dtt1d4h41a6ee" path="res://assets/materials/bullets.tres" id="1_rtp2x"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_01po3"]
+radius = 0.01
+
+[sub_resource type="SphereMesh" id="SphereMesh_akmd7"]
+radius = 0.01
+height = 0.02
+
+[node name="Bullet" type="RigidBody3D"]
+collision_layer = 0
+collision_mask = 0
+mass = 0.05
+script = ExtResource("1_qcpbo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_01po3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_akmd7")
+surface_material_override/0 = ExtResource("1_rtp2x")

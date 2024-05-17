@@ -1,5 +1,5 @@
 class_name LocomotionFlagsTracker
-extends Node
+extends Object
 
 enum LocomotionFlags {
 	IDLE = 1 << 0,
@@ -34,7 +34,7 @@ func _init(node_owner: Node3D) -> void:
 	_owner = node_owner
 
 
-func update_locomotion_flags():
+func update_flags():
 	locomotion_flags &= ~AIR_FLAGS
 	if !_owner.is_on_floor():
 		if _owner.velocity.y > 0:
@@ -43,10 +43,11 @@ func update_locomotion_flags():
 			locomotion_flags |= LocomotionFlags.FALLING
 
 	locomotion_flags &= ~MOVEMENT_FLAGS
-	if Vector2(_owner.velocity.x, _owner.velocity.z).is_zero_approx():
-		locomotion_flags |= LocomotionFlags.IDLE
-	else:
-		locomotion_flags |= LocomotionFlags.WALKING
+	if (locomotion_flags & AIR_FLAGS) == 0:
+		if Vector2(_owner.velocity.x, _owner.velocity.z).is_zero_approx():
+			locomotion_flags |= LocomotionFlags.IDLE
+		else:
+			locomotion_flags |= LocomotionFlags.WALKING
 
 	Hud.Print_property("PlayerStates", flags_as_string)
 

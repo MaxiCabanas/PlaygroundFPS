@@ -45,4 +45,4 @@ func _physics_process(delta: float) -> void:
 	last_direction = dir
 	
 	move_and_slide()
-	locomotion_flags_tracker.update_locomotion_flags()
+	locomotion_flags_tracker.update_flags()
