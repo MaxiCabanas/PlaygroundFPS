@@ -27,6 +27,14 @@ enum SwayMode {
 @export var r_damping: float = 0.5
 @export var r_responsiveness: float = -0.1
 
+@export_group("Recoil")
+## The amount of recoil is added with every shot
+@export var recoil_amount: Vector3 = Vector3(55.0, 0.0, 0.0)
+#@export var recoil_randomness
+@export var recovery_speed: float = 15
+## how fast the recoil rotation is reached
+@export var recoil_speed: float = 20
+
 ## Temporary until items are implemented
 @export_category("Ammo")
 @export var capacity := 30
@@ -36,3 +44,4 @@ enum SwayMode {
 @export_category("Specs")
 @export var bullets_per_minute := 700
 @export var muzzle_velocity := 100.0
+

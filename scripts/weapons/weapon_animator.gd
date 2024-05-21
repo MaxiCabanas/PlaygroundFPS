@@ -37,7 +37,7 @@ func _init(owner: Node3D, weapon_data: WeaponResource) -> void:
 			)
 	)
 
-func update(delta: float, input: Vector2) -> void:
+func update_physics(delta: float, input: Vector2) -> void:
 	var pos_input := _position_solver.to_position_input(input)
 	_owner.position = _position_solver.update(delta, _data.position, pos_input)
 	
