@@ -1,10 +1,6 @@
-@tool
 extends Node3D
 
-@export var data: WeaponResource
-@export var load_data: bool:
-	set(new_value):
-		_load_data(new_value)
+@export var data: WeaponResourceBase
 
 var _weapons_instances: Dictionary
 var _mouse_movement: Vector2
@@ -15,17 +11,11 @@ var _weapon_fire: WeaponFire = null
 
 
 func _enter_tree() -> void:
-	if Engine.is_editor_hint():
-		return
-	
-	_load_data()
-	_weapon_animator = WeaponAnimatior.new(self, data)
-	_weapon_fire = WeaponFire.new(self, data)
-
-
-func _load_data(bool_value = false):
 	if data:
 		WeaponLoader.load_weapon(self, data)
+		
+	_weapon_animator = WeaponAnimatior.new(self, data)
+	_weapon_fire = WeaponFire.new(self, data)
 
 
 func _input(event: InputEvent) -> void:
@@ -46,7 +36,7 @@ func _process(delta: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if !Engine.is_editor_hint() && is_multiplayer_authority():
+	if is_multiplayer_authority():
 		_mouse_movement = _mouse_movement.limit_length(data.max_sway_amount)
 		
 		_weapon_animator.update(delta, _mouse_movement)

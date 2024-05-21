@@ -13,13 +13,6 @@
 
 [resource]
 script = ExtResource("9_pwoil")
-name = "M4"
-body = ExtResource("1_s08ub")
-default_attachments = Array[Mesh]([ExtResource("2_qoa5s"), ExtResource("3_8d4w5"), ExtResource("4_72rmc"), ExtResource("5_t5r5q"), ExtResource("6_vn35b"), ExtResource("7_g8m8b")])
-material = ExtResource("8_hn5ad")
-position = Vector3(0.0494567, -0.164995, -0.0583599)
-rotation = Vector3(-8, -5, 0)
-muzzle = Vector3(-1.49012e-08, 0.0838494, -0.685294)
 sway_position_mode = 1
 sway_rotation_mode = 2
 max_sway_amount = 28.0
@@ -37,3 +30,10 @@ pellets_per_shot = 1
 ammo_scene = ExtResource("1_mhk6q")
 bullets_per_minute = 900
 muzzle_velocity = 100.0
+name = "M4"
+body = ExtResource("1_s08ub")
+default_attachments = Array[Mesh]([ExtResource("2_qoa5s"), ExtResource("3_8d4w5"), ExtResource("4_72rmc"), ExtResource("5_t5r5q"), ExtResource("6_vn35b"), ExtResource("7_g8m8b")])
+material = ExtResource("8_hn5ad")
+position = Vector3(0.0494567, -0.164995, -0.0583599)
+rotation = Vector3(-8, -5, 0)
+muzzle = Vector3(-1.49012e-08, 0.0838494, -0.685294)

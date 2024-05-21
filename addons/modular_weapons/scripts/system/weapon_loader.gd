@@ -2,7 +2,7 @@ class_name WeaponLoader extends Node
 
 const EDITOR_ROOT: String = "EDITOR_ROOT"
 
-static func load_weapon(weapon_root: Node3D, weapon_data: WeaponResource) -> WeaponResource:	
+static func load_weapon(weapon_root: Node3D, weapon_data: WeaponResourceBase) -> WeaponResourceBase:	
 	if Engine.is_editor_hint():
 		for node in weapon_root.get_children():
 			weapon_root.remove_child(node)

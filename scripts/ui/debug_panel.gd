@@ -16,11 +16,11 @@ func _input(event: InputEvent) -> void:
 
 func _process(_delta: float) -> void:
 	# draw properties if should be drawn
-	for node in properties_dic:
-		for property in properties_dic[node]:
+	for node: Node in properties_dic:
+		for property: String in properties_dic[node]:
 			_update_property(node, property)
 
-func add_or_update_property(node: Object, property: String, isVisible = true, isDynamic: bool = false, order: int = 0) -> void:
+func add_or_update_property(node: Object, property: String, isVisible: bool = true, isDynamic: bool = false, order: int = 0) -> void:
 	if !properties_dic.has(node):
 		properties_dic[node] = {}
 	
@@ -40,13 +40,13 @@ func add_or_update_property(node: Object, property: String, isVisible = true, is
 	
 	_update_property(node, property, false)
 
-func _update_property(node: Object, property: String, check_is_dynamic: bool = true):
+func _update_property(node: Object, property: String, check_is_dynamic: bool = true) -> void:
 	var property_data = properties_dic[node][property]
 	if property_data.label.get("visible") && (!check_is_dynamic || property_data.isDynamic):
 			#property_data.label.text = property + ": " + str(node.get(property))
 			property_data.label.text = "%s: %s" %[property, str(node.get(property))]
 
-func print_property(title: String, value: String, isVisible: bool, order: int):
+func print_property(title: String, value: String, isVisible: bool, _order: int) -> void:
 	var new_label: Label
 	
 	for property in printed_properties:

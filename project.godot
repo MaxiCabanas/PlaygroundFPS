@@ -28,7 +28,7 @@ gdscript/warnings/inferred_declaration=1
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/anthonyec.camera_preview/plugin.cfg")
+enabled=PackedStringArray("res://addons/anthonyec.camera_preview/plugin.cfg", "res://addons/modular_weapons/plugin.cfg")
 
 [filesystem]
 
