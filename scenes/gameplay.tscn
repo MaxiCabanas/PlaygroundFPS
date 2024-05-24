@@ -32,7 +32,7 @@ albedo_color = Color(0.478839, 0.407935, 0.242407, 1)
 [node name="Node3D" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.5373, -0.695061, 0.477702, 0.791461, -0.219857, 0.570309, -0.291373, 0.684509, 0.668243, 0, 0, 0)
+transform = Transform3D(-0.5373, -0.695061, 0.477702, 0.791461, -0.219858, 0.570309, -0.291373, 0.684509, 0.668243, 0, 25.9578, 0)
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -71,15 +71,11 @@ surface_material_override/0 = ExtResource("1_u1x3q")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="wall2/StaticBody3D"]
 shape = SubResource("BoxShape3D_7bffg")
 
-[node name="SpawnManager" type="Node" parent="."]
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://scenes/player_character.tscn")
+spawn_path = NodePath(".")
 script = ExtResource("2_6k8bo")
 PlayerScene = ExtResource("1_5glpw")
 
-[node name="Marker3D" type="Marker3D" parent="SpawnManager"]
-
-[node name="Marker3D2" type="Marker3D" parent="SpawnManager"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.86447, 0, 0)
-
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://scenes/player_character.tscn")
-spawn_path = NodePath("../SpawnManager")
+[node name="Marker3D" type="Marker3D" parent="MultiplayerSpawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.18115, 0, 0)

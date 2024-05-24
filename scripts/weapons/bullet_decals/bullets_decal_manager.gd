@@ -18,6 +18,7 @@ func add_decal(decal_position: Vector3, decal_normal: Vector3):
 	_decals[_index].queue_free()
 	_decals[_index] = new_decal
 	new_decal.look_at_from_position(decal_position, decal_position - decal_normal, Vector3.UP)
+	new_decal.rotation_degrees.z = randf() * 360.0
 	
 	get_tree().get_root().add_child(_decals[_index])
 	_index = (_index + 1) % MAX_DECALS

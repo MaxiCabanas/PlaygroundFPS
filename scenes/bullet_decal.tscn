@@ -1,10 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cfn85rgirrecf"]
+[gd_scene load_steps=2 format=3 uid="uid://cfn85rgirrecf"]
 
-[ext_resource type="Script" path="res://scripts/weapons/bullet_decals/bullet_decal.gd" id="1_aswaf"]
 [ext_resource type="Texture2D" uid="uid://cy7bohayuf61g" path="res://assets/textures/bullet_holes/bullet_hole01.png" id="1_x0vmt"]
 
 [node name="bullet_decal" type="Node3D"]
-script = ExtResource("1_aswaf")
 
 [node name="Decal" type="Decal" parent="."]
 unique_name_in_owner = true

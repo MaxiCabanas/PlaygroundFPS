@@ -31,10 +31,15 @@ enum SwayMode {
 ## The amount of recoil is added with every shot
 @export var recoil_amount: Vector3 = Vector3(55.0, 0.0, 0.0)
 @export var recoil_randomness: Vector3 = Vector3(5.0, 5.0, 5.0)
-#@export var recoil_randomness
-@export var recovery_speed: float = 15
+## Max value of recoil when character weapon control is 0.
+@export var recoil_max_amount: float = 3.0
+@export_exp_easing() var recoil_ease_in = 3.0
+## How easily the player can control the spread of the gun. The higher the easiest.
+## escentially char.control -= 100 - spread_control * delta
+@export_range(0.0, 100.0) var spread_control: float = 30.0
 ## how fast the recoil rotation is reached
 @export var recoil_speed: float = 20
+@export var recovery_speed: float = 15
 
 ## Temporary until items are implemented
 @export_category("Ammo")
@@ -47,9 +52,15 @@ enum SwayMode {
 @export var muzzle_velocity := 100.0
 
 
-func get_recoil_sample():
-	return Vector3(
-			recoil_amount.x + randf_range(-recoil_randomness.x, recoil_randomness.x),
-			recoil_amount.y + randf_range(-recoil_randomness.y, recoil_randomness.y),
-			recoil_amount.z + randf_range(-recoil_randomness.z, recoil_randomness.z)
+func get_recoil_sample(control_lost: float, char_control: float):
+	
+	var spread = Vector3(
+			randf_range(-recoil_randomness.x, recoil_randomness.x),
+			randf_range(-recoil_randomness.y, recoil_randomness.y),
+			randf_range(-recoil_randomness.z, recoil_randomness.z)
 	)
+	var control_mult := remap(char_control - control_lost, char_control, 0.0, 0.0, 1.0)
+	control_mult = clampf(control_mult, 0.0, 1.0)
+	#spread += spread * control_mult * recoil_max_amount
+	spread += spread.lerp(spread * recoil_max_amount, ease(control_mult, recoil_ease_in))
+	return recoil_amount + spread

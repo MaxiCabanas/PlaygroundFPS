@@ -5,6 +5,7 @@ const MAXSPEED = 5.0
 const ACC = 0.5
 const DESACC = 0.5
 const JUMP_VELOCITY = 4.5
+const WEAPON_CONTROL = 3.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var _gravity_value: float = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -14,12 +15,16 @@ var locomotion_flags_tracker: LocomotionFlagsTracker
 
 @onready var camera_3d: Camera3D = $Camera3D
 
+
 func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
 	locomotion_flags_tracker = LocomotionFlagsTracker.new(self)
+	GameInstance.on_player_spawn_complete(self)
+
 
 func _ready() -> void:
 	camera_3d.current = is_multiplayer_authority()
+
 
 func _physics_process(delta: float) -> void:
 	if !is_multiplayer_authority():

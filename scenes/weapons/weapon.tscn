@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://bj5swh0bjlpfl"]
 
-[ext_resource type="Script" path="res://scripts/weapons/weapon_hand.gd" id="1_j2wei"]
+[ext_resource type="Script" path="res://scripts/weapons/weapon.gd" id="1_7qr6h"]
 [ext_resource type="Resource" uid="uid://fy1w4phkpsyw" path="res://assets/weapons_custom_resources/m4.tres" id="2_rjytd"]
 
 [node name="weapon_root" type="Node3D"]
 transform = Transform3D(0.996195, 0.0121297, -0.0863075, 0, 0.990268, 0.139173, 0.0871557, -0.138644, 0.9865, 0.0494567, -0.164995, -0.0583599)
-script = ExtResource("1_j2wei")
+script = ExtResource("1_7qr6h")
 data = ExtResource("2_rjytd")
 
 [node name="Marker3D" type="Marker3D" parent="."]

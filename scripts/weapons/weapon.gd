@@ -1,7 +1,9 @@
+class_name Weapon
 extends Node3D
 
 @export var data: WeaponResourceBase
 
+var _owner_char: PlayerController
 var _weapons_instances: Dictionary
 var _mouse_movement: Vector2
 
@@ -14,6 +16,7 @@ func _enter_tree() -> void:
 	if data:
 		WeaponLoader.load_weapon(self, data)
 		
+	_owner_char = GameInstance.LocalPlayer
 	_weapon_animator = WeaponAnimatior.new(self, data)
 	_weapon_fire = WeaponFire.new(self, data)
 
@@ -32,14 +35,17 @@ func _input(event: InputEvent) -> void:
 
 
 func _process(delta: float) -> void:
-	_weapon_fire.update(delta)
+	if is_multiplayer_authority():
+		_weapon_fire.update(delta)
 
 
 func _physics_process(delta: float) -> void:
-	if is_multiplayer_authority():
-		_mouse_movement = _mouse_movement.limit_length(data.max_sway_amount)
-		
-		_weapon_animator.update_physics(delta, _mouse_movement)
-		_weapon_fire.update_physics(delta)
-		
-		_mouse_movement = _mouse_movement.lerp(Vector2.ZERO, 0.5)
+	if !is_multiplayer_authority():
+		return
+	
+	_mouse_movement = _mouse_movement.limit_length(data.max_sway_amount)
+	
+	_weapon_animator.update_physics(delta, _mouse_movement)
+	_weapon_fire.update_physics(delta)
+	
+	_mouse_movement = _mouse_movement.lerp(Vector2.ZERO, 0.5)

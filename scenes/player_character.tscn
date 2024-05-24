@@ -42,7 +42,9 @@ camera_sensitivity = 0.1
 max_camera_pitch_angle = 85.0
 min_camera_pitch_angle = -85.0
 
-[node name="weapon_root" parent="Camera3D" instance=ExtResource("3_4b3by")]
+[node name="weapon_holder" type="Node3D" parent="Camera3D"]
+
+[node name="weapon_root" parent="Camera3D/weapon_holder" instance=ExtResource("3_4b3by")]
 transform = Transform3D(0.996195, 0.0121297, -0.0863076, 0, 0.990268, 0.139173, 0.0871558, -0.138644, 0.9865, 0.0494567, -0.164995, -0.0583599)
 
 [node name="ReflectionProbe" type="ReflectionProbe" parent="Camera3D"]

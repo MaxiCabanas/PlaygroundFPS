@@ -1,4 +1,4 @@
-class_name SpawnManager extends Node
+class_name SpawnManager extends MultiplayerSpawner
 
 @export var PlayerScene: PackedScene
 
@@ -9,6 +9,7 @@ class_name SpawnManager extends Node
 var _free_spawners: Array
 
 func _ready() -> void:
+	set_spawn_function(spawn_player)
 	Lobby.player_loaded.rpc_id(1)
 	
 	if multiplayer.is_server():
@@ -17,9 +18,10 @@ func _ready() -> void:
 		else:
 			Lobby.all_players_ready.connect(start_game)
 
+
 func start_game():
 	for player in Lobby.players:
-
+		#spawn(player)
 		_try_reset_free_spawners()
 		var spawn_point = _free_spawners.pick_random() as Node3D
 		#_free_spawners.erase(spawn_point)
@@ -30,6 +32,20 @@ func start_game():
 		player_instance.global_position = spawn_point.global_position
 		player_instance.global_rotation = spawn_point.global_rotation
 
+
 func _try_reset_free_spawners():
 	if _free_spawners.is_empty():
 		_free_spawners = get_children()
+
+
+func spawn_player(id: int) -> Node:
+	_try_reset_free_spawners()
+	var spawn_point = _free_spawners.pick_random() as Node3D
+	#_free_spawners.erase(spawn_point)
+	var player_instance = PlayerScene.instantiate() as Node3D
+	
+	player_instance.name = str(id)
+	player_instance.global_position = spawn_point.global_position
+	player_instance.global_rotation = spawn_point.global_rotation
+	
+	return player_instance
