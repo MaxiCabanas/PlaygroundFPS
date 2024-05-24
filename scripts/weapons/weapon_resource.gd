@@ -52,7 +52,7 @@ enum SwayMode {
 @export var muzzle_velocity := 100.0
 
 
-func get_recoil_sample(control_lost: float, char_control: float):
+func get_recoil_sample(control_lost: float, char_control: float) -> Vector3:
 	
 	var spread = Vector3(
 			randf_range(-recoil_randomness.x, recoil_randomness.x),

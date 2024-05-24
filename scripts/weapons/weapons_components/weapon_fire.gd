@@ -1,6 +1,7 @@
 class_name WeaponFire
 extends Object
 
+var _player: PlayerController
 var _owner_weapon: Weapon = null
 var _data: WeaponResource = null
 var _trigger_is_pulled := false
@@ -20,6 +21,7 @@ func _init(owner_weapon: Node3D, weapon_data: WeaponResource) -> void:
 	current_bullets = _data.capacity
 	_current_target_rot = _data.rotation
 	_current_rot = _data.rotation
+	_player = GameInstance.LocalPlayer
 
 
 func trigger_pulled():
@@ -34,7 +36,7 @@ func update(delta: float) -> void:
 	
 	if _trigger_is_pulled && _cooldown == 0.0:
 		_fire_bullet()
-		_current_target_rot += _data.get_recoil_sample(_elapsed_control_lost, _owner_weapon._owner_char.WEAPON_CONTROL)
+		_current_target_rot += _data.get_recoil_sample(_elapsed_control_lost, _player.WEAPON_CONTROL)
 		_elapsed_control_lost += (100 - _data.spread_control) * delta
 	
 	if !_trigger_is_pulled:
@@ -45,7 +47,7 @@ func update(delta: float) -> void:
 
 func update_physics(delta: float) ->void:
 	_current_target_rot = _current_target_rot.lerp(_data.rotation, _data.recovery_speed * delta)
-	_current_rot = _current_rot.lerp(_current_target_rot, _data.recoil_speed * delta)
+	_current_rot = _current_rot.slerp(_current_target_rot, _data.recoil_speed * delta)
 	_owner_weapon.rotation_degrees = _current_rot
 
 
