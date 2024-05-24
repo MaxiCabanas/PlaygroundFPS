@@ -30,6 +30,7 @@ enum SwayMode {
 @export_group("Recoil")
 ## The amount of recoil is added with every shot
 @export var recoil_amount: Vector3 = Vector3(55.0, 0.0, 0.0)
+@export var recoil_randomness: Vector3 = Vector3(5.0, 5.0, 5.0)
 #@export var recoil_randomness
 @export var recovery_speed: float = 15
 ## how fast the recoil rotation is reached
@@ -45,3 +46,10 @@ enum SwayMode {
 @export var bullets_per_minute := 700
 @export var muzzle_velocity := 100.0
 
+
+func get_recoil_sample():
+	return Vector3(
+			recoil_amount.x + randf_range(-recoil_randomness.x, recoil_randomness.x),
+			recoil_amount.y + randf_range(-recoil_randomness.y, recoil_randomness.y),
+			recoil_amount.z + randf_range(-recoil_randomness.z, recoil_randomness.z)
+	)

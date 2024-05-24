@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 HUD="*res://scenes/ui/hud_scene.tscn"
 Lobby="*res://scripts/workflow/lobby.gd"
 GameInstance="*res://scripts/workflow/game_instance.gd"
+BulletsDecalManager="*res://scripts/weapons/bullet_decals/bullets_decal_manager.gd"
 
 [debug]
 

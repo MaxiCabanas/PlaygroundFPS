@@ -6,6 +6,9 @@ var _data: WeaponResource = null
 var _trigger_is_pulled := false
 var _cooldown := 0.0
 
+# Placeholder until items:
+var current_bullets: int
+
 var _current_target_rot: Vector3
 var _current_rot: Vector3
 
@@ -13,6 +16,7 @@ var _current_rot: Vector3
 func _init(owner_weapon: Node3D, weapon_data: WeaponResource) -> void:
 	_owner = owner_weapon
 	_data = weapon_data
+	current_bullets = _data.capacity
 	_current_target_rot = _data.rotation
 	_current_rot = _data.rotation
 	Hud.Add_or_update_property(_owner, "rotation_degrees", true, true)
@@ -28,10 +32,10 @@ func trigger_released():
 func update(delta: float) -> void:
 	if _trigger_is_pulled && _cooldown == 0.0:
 		_fire_bullet()
-		_current_target_rot += _data.recoil_amount
+		_current_target_rot += _data.get_recoil_sample()
 	
 	_cooldown = maxf(_cooldown - delta, 0.0)
-	
+
 
 func update_physics(delta: float) ->void:
 	_current_target_rot = _current_target_rot.lerp(_data.rotation, _data.recovery_speed * delta)
