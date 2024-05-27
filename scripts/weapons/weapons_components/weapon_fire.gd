@@ -58,9 +58,9 @@ func update_physics(delta: float) ->void:
 	_owner_weapon.rotation_degrees = _current_rot
 	
 	_current_target_pos = _current_target_pos.lerp(
-			_data.position, _data.weapon_pos_recoil_snap_speed * delta)
+			_data.position, _data.kickback_recovery_speed * delta)
 	_current_pos = _current_pos.lerp(
-			_current_target_pos, _data.weapon_pos_recoil_recovery_speed * delta)
+			_current_target_pos, _data.kickback_snap_speed * delta)
 	_owner_weapon.position = _current_pos
 
 

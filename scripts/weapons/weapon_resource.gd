@@ -47,10 +47,11 @@ var cam_recoil_randomness_rad: Vector3
 @export var recoil_speed: float = 20
 @export var recovery_speed: float = 15
 
-@export var weapon_kickback_strength_base = Vector3(0.0, 0.0, 4.0)
-@export var weapon_kickback_strength_randomness = Vector3(2.0, 2.0, 2.0)
-@export var weapon_pos_recoil_snap_speed: float = 30
-@export var weapon_pos_recoil_recovery_speed: float = 30
+@export_subgroup("Kickback")
+@export var kickback_strength_base = Vector3(0.0, 0.0, 4.0)
+@export var kickback_strength_randomness = Vector3(2.0, 2.0, 2.0)
+@export var kickback_snap_speed: float = 30
+@export var kickback_recovery_speed: float = 30
 
 @export_subgroup("Spread")
 ## Max value of recoil when character weapon control is 0.
@@ -97,7 +98,7 @@ func get_camera_recoil_sample() -> Vector3:
 
 
 func get_weapon_kick_sample() -> Vector3:
-	return weapon_kickback_strength_base + Global.randomize_v3(weapon_kickback_strength_randomness)
+	return kickback_strength_base + Global.randomize_v3(kickback_strength_randomness)
 
 
 func get_spread_sample(control_lost_delta: float, char_control: float) -> Vector3:
