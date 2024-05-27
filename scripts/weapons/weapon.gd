@@ -1,6 +1,8 @@
 class_name Weapon
 extends Node3D
 
+signal on_fire()
+
 @export var data: WeaponResourceBase
 
 var _owner_char: PlayerController
@@ -18,7 +20,9 @@ func _enter_tree() -> void:
 		
 	_owner_char = GameInstance.LocalPlayer
 	_weapon_animator = WeaponAnimatior.new(self, data)
+	
 	_weapon_fire = WeaponFire.new(self, data)
+	_weapon_fire.bullet_fired.connect(func(): on_fire.emit())
 
 
 func _input(event: InputEvent) -> void:
@@ -46,6 +50,6 @@ func _physics_process(delta: float) -> void:
 	_mouse_movement = _mouse_movement.limit_length(data.max_sway_amount)
 	
 	_weapon_animator.update_physics(delta, _mouse_movement)
-	_weapon_fire.update_physics(delta)
+	#_weapon_fire.update_physics(delta)
 	
 	_mouse_movement = _mouse_movement.lerp(Vector2.ZERO, 0.5)

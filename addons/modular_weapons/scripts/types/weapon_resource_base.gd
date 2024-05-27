@@ -1,3 +1,5 @@
+# We need this base resource so ModularWeapons plug-in can recognize and instantiate
+# the weapon.
 class_name WeaponResourceBase extends Resource
 
 

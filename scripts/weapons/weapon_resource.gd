@@ -1,3 +1,4 @@
+@tool
 class_name WeaponResource extends WeaponResourceBase
 
 enum SwayMode {
@@ -29,8 +30,18 @@ enum SwayMode {
 
 @export_group("Recoil")
 ## The amount of recoil is added with every shot
-@export var recoil_amount: Vector3 = Vector3(55.0, 0.0, 0.0)
-@export var recoil_randomness: Vector3 = Vector3(5.0, 5.0, 5.0)
+@export var recoil_amount: Vector3 = Vector3(5.0, 0.0, 0.0):
+	set(value):
+		recoil_amount = value
+		recoil_amount_rad = Global.deg_to_rad_v3(value)
+var recoil_amount_rad: Vector3
+
+@export var recoil_randomness: Vector3 = Vector3(1.0, 1.0, 0.5):
+	set(value):
+		recoil_randomness = value
+		recoil_randomness_rad = Global.deg_to_rad_v3(value)
+var recoil_randomness_rad: Vector3
+		
 ## Max value of recoil when character weapon control is 0.
 @export var recoil_max_amount: float = 3.0
 @export_exp_easing() var recoil_ease_in = 3.0
@@ -52,15 +63,29 @@ enum SwayMode {
 @export var muzzle_velocity := 100.0
 
 
-func get_recoil_sample(control_lost: float, char_control: float) -> Vector3:
+func _get_property_list() -> Array[Dictionary]:
+	var result:Array[Dictionary] = []
+	# Don't show it in the inspector and save it to disk
+	result.push_back({
+		"name": "recoil_amount_rad",
+		"type": TYPE_VECTOR3,
+		"usage": PROPERTY_USAGE_NO_EDITOR,
+	})
+	result.push_back({
+		"name": "recoil_randomness_rad",
+		"type": TYPE_VECTOR3,
+		"usage": PROPERTY_USAGE_NO_EDITOR,
+	})
+	return result
+
+
+func get_recoil_sample() -> Vector3:
+	return recoil_amount_rad + Global.randomize_v3(recoil_randomness_rad)
 	
-	var spread = Vector3(
-			randf_range(-recoil_randomness.x, recoil_randomness.x),
-			randf_range(-recoil_randomness.y, recoil_randomness.y),
-			randf_range(-recoil_randomness.z, recoil_randomness.z)
-	)
-	var control_mult := remap(char_control - control_lost, char_control, 0.0, 0.0, 1.0)
-	control_mult = clampf(control_mult, 0.0, 1.0)
-	#spread += spread * control_mult * recoil_max_amount
-	spread += spread.lerp(spread * recoil_max_amount, ease(control_mult, recoil_ease_in))
-	return recoil_amount + spread
+#func get_recoil_sample(control_lost: float, char_control: float) -> Vector3:
+	#var spread = Global.randomize_v3(recoil_randomness)
+	#var control_mult := remap(char_control - control_lost, char_control, 0.0, 0.0, 1.0)
+	#control_mult = clampf(control_mult, 0.0, 1.0)
+	##spread += spread * control_mult * recoil_max_amount
+	#spread += spread.lerp(spread * recoil_max_amount, ease(control_mult, recoil_ease_in))
+	#return recoil_amount + spread

@@ -13,7 +13,7 @@ var last_direction: Vector3
 
 var locomotion_flags_tracker: LocomotionFlagsTracker
 
-@onready var camera_3d: Camera3D = $Camera3D
+@onready var camera_3d: Camera3D = %Camera3D
 
 
 func _enter_tree() -> void:

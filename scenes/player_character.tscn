@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://c6qbjm3hxmpqx"]
+[gd_scene load_steps=8 format=3 uid="uid://c6qbjm3hxmpqx"]
 
 [ext_resource type="Script" path="res://scripts/character/character_controller.gd" id="1_jhnqr"]
 [ext_resource type="Script" path="res://scripts/character/fps_camera_controller.gd" id="2_cliif"]
 [ext_resource type="PackedScene" uid="uid://bj5swh0bjlpfl" path="res://scenes/weapons/weapon.tscn" id="3_4b3by"]
+[ext_resource type="Script" path="res://scripts/weapons/weapon_holder.gd" id="4_y6ctm"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_tpi3h"]
 
@@ -34,7 +35,11 @@ mesh = SubResource("CapsuleMesh_tpi3h")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_mp70y")
 
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_lspyx")
+
 [node name="Camera3D" type="Camera3D" parent="."]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 fov = 90.0
 script = ExtResource("2_cliif")
@@ -43,6 +48,8 @@ max_camera_pitch_angle = 85.0
 min_camera_pitch_angle = -85.0
 
 [node name="weapon_holder" type="Node3D" parent="Camera3D"]
+unique_name_in_owner = true
+script = ExtResource("4_y6ctm")
 
 [node name="weapon_root" parent="Camera3D/weapon_holder" instance=ExtResource("3_4b3by")]
 transform = Transform3D(0.996195, 0.0121297, -0.0863076, 0, 0.990268, 0.139173, 0.0871558, -0.138644, 0.9865, 0.0494567, -0.164995, -0.0583599)
@@ -50,6 +57,3 @@ transform = Transform3D(0.996195, 0.0121297, -0.0863076, 0, 0.990268, 0.139173, 
 [node name="ReflectionProbe" type="ReflectionProbe" parent="Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00130391, 0.00898194, -0.00185156)
 update_mode = 1
-
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_lspyx")
