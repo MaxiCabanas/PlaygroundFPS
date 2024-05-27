@@ -19,6 +19,7 @@ var _weapon_data: WeaponResource:
 	get:
 		return weapon_holder.active_weapon.data
 
+
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	weapon_holder.on_active_weapon_fire.connect(_add_recoil)
@@ -31,7 +32,7 @@ func _process(delta: float) -> void:
 
 
 func _add_recoil() -> void:
-	_current_recoil = _weapon_data.get_recoil_sample()
+	_current_recoil = _weapon_data.get_camera_recoil_sample()
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -44,6 +45,7 @@ func _integrate_recoil_to_camera(delta: float) -> void:
 			_camera_rotation + _current_recoil, 
 			_weapon_data.recoil_speed * delta)
 	_current_recoil = _current_recoil.lerp(Vector3.ZERO, _weapon_data.recovery_speed * delta)
+	_camera_rotation.z = lerpf(_camera_rotation.z, 0.0, _weapon_data.recovery_speed * delta)
 
 
 func _integrate_input_to_camera(delta: float) -> void:
@@ -51,7 +53,7 @@ func _integrate_input_to_camera(delta: float) -> void:
 	_camera_rotation.x = clampf(_camera_rotation.x, min_pitch_as_rad, max_pitch_as_rad)
 	_camera_rotation.y += _mouse_input.x * delta
 	
-	transform.basis = Basis.from_euler(Vector3(_camera_rotation.x, 0.0, 0.0))
+	transform.basis = Basis.from_euler(Vector3(_camera_rotation.x, 0.0, _camera_rotation.z))
 	character_root.global_transform.basis = Basis.from_euler(Vector3(0.0, _camera_rotation.y, 0.0))
 	
 	_mouse_input = Vector2.ZERO

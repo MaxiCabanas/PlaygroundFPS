@@ -6,7 +6,8 @@ signal on_active_weapon_fire()
 
 var active_weapon: Weapon:
 	set(new_value):
-		active_weapon.on_fire.disconnect(_active_weapon_fire)
+		if active_weapon:
+			active_weapon.on_fire.disconnect(_active_weapon_fire)
 		active_weapon = new_value
 		on_weapon_changed.emit(active_weapon)
 		active_weapon.on_fire.connect(_active_weapon_fire)

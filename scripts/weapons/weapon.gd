@@ -50,6 +50,6 @@ func _physics_process(delta: float) -> void:
 	_mouse_movement = _mouse_movement.limit_length(data.max_sway_amount)
 	
 	_weapon_animator.update_physics(delta, _mouse_movement)
-	#_weapon_fire.update_physics(delta)
+	_weapon_fire.update_physics(delta)
 	
 	_mouse_movement = _mouse_movement.lerp(Vector2.ZERO, 0.5)
