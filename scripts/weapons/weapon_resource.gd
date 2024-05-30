@@ -63,6 +63,7 @@ var cam_recoil_randomness_rad: Vector3
 ## How easily the player can control the spread of the gun. The higher the easiest.
 ## escentially char.control -= 100 - spread_control * delta
 @export_range(0.0, 100.0) var spread_control: float = 30.0
+@export var spread_control_recovery_speed: float = 5.0
 @export var spread_speed: float = 15.0
 @export var spread_recovery_speed: float = 10.0
 

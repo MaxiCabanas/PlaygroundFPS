@@ -1,6 +1,6 @@
 class_name AnimationSolver extends Node
 
-func update(delta:float, target:Vector3, velocity:Vector3) -> Vector3:
+func update(delta:float, current:Vector3, target:Vector3, velocity:Vector3) -> Vector3:
 	return target
 
 

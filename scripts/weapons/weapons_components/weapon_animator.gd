@@ -39,7 +39,7 @@ func _init(owner: Node3D, weapon_data: WeaponResource) -> void:
 
 func update_physics(delta: float, input: Vector2) -> void:
 	var pos_input := _position_solver.to_position_input(input)
-	_owner.position = _position_solver.update(delta, _data.position, pos_input)
+	_owner.last_current_position = _position_solver.update(delta, _owner.last_current_position, _data.position, pos_input)
 	
 	var rot_input := _rotation_solver.to_rotation_input(input)
-	_owner.rotation_degrees = _rotation_solver.update(delta, _data.rotation, rot_input)
+	_owner.last_current_rotation = _rotation_solver.update(delta, _owner.last_current_rotation, _data.rotation, rot_input)

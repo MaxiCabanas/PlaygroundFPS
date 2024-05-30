@@ -1,6 +1,6 @@
 class_name SecondObjectDynamicsSolver extends AnimationSolver
 
-var _current_position: Vector3
+#var _current_position: Vector3
 var _input_multiplier: Vector3
 var _current_velocity: Vector3 = Vector3.ZERO
 
@@ -15,11 +15,11 @@ func _init(f:float, z:float, r:float, input_multiplier: Vector3, x0:Vector3 = Ve
 	_k2 = 1 / (TWOPIF * TWOPIF)
 	_k3 = r * z / TWOPIF
 	
-	_current_position = x0
+	#_current_position = x0
 	_input_multiplier = input_multiplier
 
 
-func update(delta:float, input_target_pos:Vector3, input_vel:Vector3) -> Vector3:
+func update(delta:float, current:Vector3, input_target_pos:Vector3, input_vel:Vector3) -> Vector3:
 	# We are not infering velocity, we are always passing a valid velocity
 	#if input_vel == null:
 		#input_vel = (input_target_pos - _current_position) / delta
@@ -30,9 +30,9 @@ func update(delta:float, input_target_pos:Vector3, input_vel:Vector3) -> Vector3
 			input_vel.z * _input_multiplier.z
 	)
 	
-	_current_position += delta * _current_velocity
-	_current_velocity += delta * (input_target_pos + _k3 * vel - _current_position - _k1 * _current_velocity) / _k2
-	return _current_position
+	current += delta * _current_velocity
+	_current_velocity += delta * (input_target_pos + _k3 * vel - current - _k1 * _current_velocity) / _k2
+	return current
 
 
 #rot:
