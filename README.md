@@ -4,4 +4,4 @@ Basic multiplayer FPS made in Godot as a way to learn how in general the engine 
 - Procedural recoil.
 - Multiplayer replication
 
-![](https://maxicabanas.com/images/fps-godot-portada.gif)
+![Recoil Demo](https://maxicabanas.com/images/fps-godot-portada-optimized.gif)
